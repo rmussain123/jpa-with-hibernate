@@ -7,3 +7,11 @@ This repository having more example with jpa hibernate with combination of sprin
         4. warning
         5. error
         6. off - Means, this will turn off the logging
+2. Spring boot Actuator
+   1. Monitor and manage your application in your production
+   2. Provides number of endpoint:
+      1. beans - Complete list of spring beans in your app
+      2. health - application health information
+      3. metricsDetails around request mapping
+      
+3. 
