@@ -1,7 +1,6 @@
 package com.studies.hibernate.jpawithhibernate;
 
 import com.google.gson.Gson;
-import com.studies.hibernate.jpawithhibernate.entity.Course;
 import com.studies.hibernate.jpawithhibernate.repository.CourseRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -25,8 +24,13 @@ public class JpaWithHibernateApplication implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
-		Course course = courseRepository.findById(10001L);
-		courseRepository.deletById(10001L);
-		courseRepository.save(new Course("Sonata"));
+//		Course course = courseRepository.findById(10001L);
+//		courseRepository.deletById(10001L);
+//		courseRepository.save(new Course("Sonata"));
+
+		courseRepository.playWithEntityManager();
+		Gson json = new Gson();
+		logger.info("Course details::"+json.toJson(courseRepository.getAllCourses()));
+
 	}
 }

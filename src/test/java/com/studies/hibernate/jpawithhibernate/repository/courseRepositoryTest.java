@@ -1,7 +1,7 @@
 package com.studies.hibernate.jpawithhibernate.repository;
 
 import com.studies.hibernate.jpawithhibernate.JpaWithHibernateApplication;
-import com.studies.hibernate.jpawithhibernate.entity.Course;
+import com.studies.hibernate.jpawithhibernate.entity.course;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
@@ -12,7 +12,7 @@ import org.springframework.test.annotation.DirtiesContext;
 
 
 @SpringBootTest(classes = JpaWithHibernateApplication.class)
-class CourseRepositoryTest {
+class courseRepositoryTest {
 
     @Autowired
     CourseRepository courseRepository;
@@ -26,16 +26,16 @@ class CourseRepositoryTest {
 
     @Test
     public void findById_basic(){
-        Course course = courseRepository.findById(10001L);
+        course course = courseRepository.findById(10001L);
         Assertions.assertEquals("JPA in 50 steps" , course.getName());
     }
 
     @Test
     public void insertRecordTest(){
-        Course course = courseRepository.findById(10002L);
+        course course = courseRepository.findById(10002L);
         course.setName("JPA Learned");
         courseRepository.save(course);
-        Course course1 = courseRepository.findById(10002L);
+        com.studies.hibernate.jpawithhibernate.entity.course course1 = courseRepository.findById(10002L);
         Assertions.assertEquals("JPA Learned" , course1.getName());
     }
 

@@ -1,11 +1,10 @@
 package com.studies.hibernate.jpawithhibernate.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 @Entity
-public class Course {
+@NamedQuery(name="course.findAll", query="SELECT id, Name FROM course")
+public class course {
 
     @Id
     @GeneratedValue
@@ -13,10 +12,10 @@ public class Course {
 
     private String Name;
 
-    protected Course(){
+    protected course(){
 
     }
-    public Course(String name) {
+    public course(String name) {
         Name = name;
     }
 
