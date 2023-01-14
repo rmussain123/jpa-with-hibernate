@@ -47,6 +47,33 @@ public class CourseRepository {
         course.setName("This is playing update!");
     }
 
+
+    public void playWithEMFlushClear(){
+        course course = new course("Learn hibernate ex-1");
+        em.persist(course);
+        em.flush();
+        course course1 = new course("Learn hibernate ex-2");
+        em.persist( course1);
+        em.flush();
+
+        //This method will clear the values attached in the object
+        em.clear();
+
+         /*This method with discontinued the conenctivity with database object to be updated so that upcoming changes will not
+         * track to update in the database*/
+        em.detach(course);
+
+        course.setName("Learn hibernate ex-1 - updated");
+
+        //This method will force to update the value to the database..
+        em.flush();
+
+
+
+        course1.setName("Learn hibernate ex-2 - Updated");
+
+    }
+
     /**
      * Getting all record using entity manager
      * Here the course.findall will be mapping in course pojo class

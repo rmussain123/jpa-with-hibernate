@@ -28,7 +28,7 @@ public class JpaWithHibernateApplication implements CommandLineRunner {
 //		courseRepository.deletById(10001L);
 //		courseRepository.save(new Course("Sonata"));
 
-		courseRepository.playWithEntityManager();
+		courseRepository.playWithEMFlushClear();
 		Gson json = new Gson();
 		logger.info("Course details::"+json.toJson(courseRepository.getAllCourses()));
 
