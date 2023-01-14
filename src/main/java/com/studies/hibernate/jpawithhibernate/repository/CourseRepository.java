@@ -56,7 +56,7 @@ public class CourseRepository {
         em.persist( course1);
         em.flush();
 
-        //This method will clear the values attached in the object
+        //This method will clear all the things which em manages
         em.clear();
 
          /*This method with discontinued the conenctivity with database object to be updated so that upcoming changes will not
@@ -71,6 +71,27 @@ public class CourseRepository {
 
 
         course1.setName("Learn hibernate ex-2 - Updated");
+
+    }
+
+    /**
+     * em.refresh -  This method will refresh the value with database value
+     * This method will remove the value which already has been set and take the value from database..
+     */
+
+    public void playWithEMFlushRfresh(){
+        course course = new course("Learn hibernate ex-1");
+        em.persist(course);
+
+        course course1 = new course("Learn hibernate ex-2");
+        em.persist( course1);
+        em.flush();
+
+        course.setName("Learn hibernate ex-1 - updated");
+        course1.setName("Learn hibernate ex-2 - Updated");
+        em.refresh(course);
+        System.out.println("The name value ::" + course.getName());
+
 
     }
 
