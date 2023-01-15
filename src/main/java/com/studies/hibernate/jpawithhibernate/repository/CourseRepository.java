@@ -1,6 +1,9 @@
 package com.studies.hibernate.jpawithhibernate.repository;
 
 import com.studies.hibernate.jpawithhibernate.entity.course;
+import com.studies.hibernate.jpawithhibernate.entity.passport;
+import com.studies.hibernate.jpawithhibernate.entity.review;
+import com.studies.hibernate.jpawithhibernate.entity.student;
 import jakarta.persistence.EntityManager;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -107,6 +110,31 @@ public class CourseRepository {
         return courses;
 
     }
+
+    public List<passport> getAllPassport(){
+
+        List<passport> passports = em.createNamedQuery("course.passport").getResultList();
+        return passports;
+
+    }
+
+
+    public List<review> getAllReview(){
+
+        List<review> reviews = em.createNamedQuery("course.review").getResultList();
+        return reviews;
+
+    }
+
+
+    public List<student> getAllStudent(){
+
+        List<student> students = em.createNamedQuery("course.student").getResultList();
+        return students;
+
+    }
+
+
 
 
     //public Course findById(LongId)

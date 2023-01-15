@@ -6,15 +6,9 @@ import org.hibernate.annotations.UpdateTimestamp;
 
 import java.time.LocalDateTime;
 
-
-//@NamedQueries(value = {
-//        @NamedQuery(name="findAll", query="SELECT id, Name FROM course"),
-//        @NamedQuery(name="findid", query="SELECT id FROM course")}
-//)
-
 @Entity
-@NamedQuery(name="course.findAll", query="SELECT id, Name FROM course")
-public class course {
+@NamedQuery(name="course.student", query="SELECT id, Name FROM student")
+public class student {
 
     @Id
     @GeneratedValue
@@ -26,10 +20,28 @@ public class course {
     @Column(nullable = false)
     private String Name;
 
-    protected course(){
+    /**
+     * Unnecessary the data will fetch if we use fetch type as eager.
+     * If we use here as LAZY as fetch type, this will fetch only the lazy type
+     * See the logger
+     */
+    @OneToOne(fetch = FetchType.LAZY)
+    private passport passport;
+
+
+    public com.studies.hibernate.jpawithhibernate.entity.passport getPassport() {
+        return passport;
+    }
+
+    public void setPassport(com.studies.hibernate.jpawithhibernate.entity.passport passport) {
+        this.passport = passport;
+    }
+
+
+    protected student(){
 
     }
-    public course(String name) {
+    public student(String name) {
         Name = name;
     }
 
@@ -53,7 +65,7 @@ public class course {
 
     @Override
     public String toString() {
-        return "Course{" +
+        return "student{" +
                 "id=" + id +
                 ", Name='" + Name + '\'' +
                 '}';
