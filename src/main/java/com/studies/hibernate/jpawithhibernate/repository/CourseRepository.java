@@ -6,6 +6,8 @@ import com.studies.hibernate.jpawithhibernate.entity.review;
 import com.studies.hibernate.jpawithhibernate.entity.student;
 import jakarta.persistence.EntityManager;
 import jakarta.transaction.Transactional;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -14,6 +16,8 @@ import java.util.List;
 @Repository
 @Transactional
 public class CourseRepository {
+
+    Logger logger = LoggerFactory.getLogger(CourseRepository.class);
 
     @Autowired
     EntityManager em;
@@ -131,6 +135,22 @@ public class CourseRepository {
 
         List<student> students = em.createNamedQuery("course.student").getResultList();
         return students;
+
+    }
+
+    public void addReviewForCourse(){
+        course course= findById(10003L);
+        logger.info("Inside Add review for courses {}", course.getReviews());
+        review review1 = new review("5", "Great handon");
+        review review2 = new review("5", "Hats - Off");
+
+        course.addReview(review1);
+        course.addReview(review2);
+
+        review1.setCourse(course);
+        review2.setCourse(course);
+        em.persist(review1);
+        em.persist(review2);
 
     }
 

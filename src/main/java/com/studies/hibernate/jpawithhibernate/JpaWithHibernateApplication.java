@@ -34,10 +34,13 @@ public class JpaWithHibernateApplication implements CommandLineRunner {
 
 //		studentRepository.saveStudentDetails();
 		Gson json = new Gson();
-		logger.info("Course details::"+json.toJson(courseRepository.getAllCourses()));
-		logger.info("Passport details::"+json.toJson(courseRepository.getAllPassport()));
-		logger.info("Review details::"+json.toJson(courseRepository.getAllReview()));
-		logger.info("students details::"+json.toJson(courseRepository.getAllStudent()));
+//		logger.info("Course details::"+json.toJson(courseRepository.getAllCourses()));
+//		logger.info("Passport details::"+json.toJson(courseRepository.getAllPassport()));
+//		logger.info("Review details::"+json.toJson(courseRepository.getAllReview()));
+//		logger.info("students details::"+json.toJson(courseRepository.getAllStudent()));
+		courseRepository.addReviewForCourse();
+
+
 
 	}
 }

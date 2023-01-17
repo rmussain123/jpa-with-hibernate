@@ -26,7 +26,8 @@ public class review {
     protected review(){
 
     }
-    public review(String description) {
+    public review(String rating, String description) {
+        this.rating = rating;
         this.description = description;
     }
 
@@ -35,6 +36,9 @@ public class review {
 
     @UpdateTimestamp
     private LocalDateTime lastUpdatedDate;
+
+    @ManyToOne
+    private course course;
 
     public int getId() {
         return id;
@@ -55,6 +59,15 @@ public class review {
     public void setRating(String rating) {
         this.rating = rating;
     }
+
+    public com.studies.hibernate.jpawithhibernate.entity.course getCourse() {
+        return course;
+    }
+
+    public void setCourse(com.studies.hibernate.jpawithhibernate.entity.course course) {
+        this.course = course;
+    }
+
 
     @Override
     public String toString() {

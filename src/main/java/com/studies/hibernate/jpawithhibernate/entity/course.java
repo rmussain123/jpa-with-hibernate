@@ -1,10 +1,13 @@
 package com.studies.hibernate.jpawithhibernate.entity;
 
 import jakarta.persistence.*;
+import org.apache.catalina.LifecycleState;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 
 //@NamedQueries(value = {
@@ -33,6 +36,9 @@ public class course {
         Name = name;
     }
 
+    @OneToMany(mappedBy = "course")
+    private List<review> reviews = new ArrayList<>();
+
     @CreationTimestamp
     private LocalDateTime createdDate;
 
@@ -50,6 +56,21 @@ public class course {
     public void setName(String name) {
         Name = name;
     }
+
+    public List<review> getReviews() {
+        return reviews;
+    }
+
+    public void addReview(review review) {
+        this.reviews.add(review);
+    }
+
+    public void removeReview(review review) {
+        this.reviews.remove(review);
+    }
+
+
+
 
     @Override
     public String toString() {
