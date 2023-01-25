@@ -14,3 +14,9 @@ insert into passport(id, number) values (40003, 'E87654');
 insert into review(id, rating, description,course_id) values (50001, '3', 'Good course', 10001);
 insert into review(id, rating, description,course_id) values (50002, '4',  'Nice course', 10001);
 insert into review(id, rating, description,course_id) values (50003, '5', 'Well course', 10003);
+
+
+insert into student_course(student_id, course_id) values(20001,10001);
+insert into student_course(student_id, course_id) values(20002,10001);
+insert into student_course(student_id, course_id) values(20003,10001);
+insert into student_course(student_id, course_id) values(20001,10003);

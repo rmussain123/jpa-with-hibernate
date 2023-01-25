@@ -52,6 +52,15 @@ class studentRepositoryTest {
 
     }
 
+    @Test
+    @Transactional
+    public void findByStudent_join(){
+        student student = entityManager.find(com.studies.hibernate.jpawithhibernate.entity.student.class,20001L);
+        logger.info("student id -> {}", student.getId());
+        logger.info("student courses -> {}", student.getCourse());
+
+    }
+
 
 
 }

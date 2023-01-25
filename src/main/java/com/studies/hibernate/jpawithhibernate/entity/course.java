@@ -36,8 +36,12 @@ public class course {
         Name = name;
     }
 
-    @OneToMany(mappedBy = "course")
+    @OneToMany(mappedBy = "course", fetch = FetchType.EAGER)
     private List<review> reviews = new ArrayList<>();
+
+
+    @ManyToMany(mappedBy = "course")
+    private List<student> students = new ArrayList<>();
 
     @CreationTimestamp
     private LocalDateTime createdDate;
@@ -69,8 +73,13 @@ public class course {
         this.reviews.remove(review);
     }
 
+    public List<student> getStudents() {
+        return students;
+    }
 
-
+    public void addStudent(student students) {
+        this.students.add(students);
+    }
 
     @Override
     public String toString() {

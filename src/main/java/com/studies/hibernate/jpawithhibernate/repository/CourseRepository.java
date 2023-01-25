@@ -138,7 +138,7 @@ public class CourseRepository {
 
     }
 
-    public void addReviewForCourse(){
+    public void addReviewForCourseHarcoded(){
         course course= findById(10003L);
         logger.info("Inside Add review for courses {}", course.getReviews());
         review review1 = new review("5", "Great handon");
@@ -153,6 +153,22 @@ public class CourseRepository {
         em.persist(review2);
 
     }
+
+    // removed hard coded values and generalized inserted values
+
+    public void addReviewForCourseHarcoded(Long courseId, List<review> reviews){
+        course course= findById(courseId);
+
+        for(review review : reviews){
+
+        course.addReview(review);
+        review.setCourse(course);
+        em.persist(review);
+        logger.info("Review added successfully!");
+        }
+
+    }
+
 
 
 

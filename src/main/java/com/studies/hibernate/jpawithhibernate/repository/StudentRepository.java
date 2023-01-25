@@ -1,8 +1,6 @@
 package com.studies.hibernate.jpawithhibernate.repository;
 
-import com.studies.hibernate.jpawithhibernate.entity.student;
-import com.studies.hibernate.jpawithhibernate.entity.passport;
-import com.studies.hibernate.jpawithhibernate.entity.review;
+import com.studies.hibernate.jpawithhibernate.entity.*;
 import com.studies.hibernate.jpawithhibernate.entity.student;
 import jakarta.persistence.EntityManager;
 import jakarta.transaction.Transactional;
@@ -140,6 +138,14 @@ public class StudentRepository {
 
         List<student> students = em.createNamedQuery("student.student").getResultList();
         return students;
+
+    }
+
+    public void saveStudentCourseDetails(student student , course course){
+        student.setCourse(course);
+        course.addStudent(student);
+       em.persist(student);
+        em.persist(course);
 
     }
 

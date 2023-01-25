@@ -2,6 +2,9 @@ package com.studies.hibernate.jpawithhibernate.repository;
 
 import com.studies.hibernate.jpawithhibernate.JpaWithHibernateApplication;
 import com.studies.hibernate.jpawithhibernate.entity.course;
+import com.studies.hibernate.jpawithhibernate.entity.review;
+import jakarta.persistence.EntityManager;
+import jakarta.transaction.Transactional;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
@@ -16,6 +19,9 @@ class courseRepositoryTest {
 
     @Autowired
     CourseRepository courseRepository;
+
+    @Autowired
+    EntityManager em;
 
     private Logger logger = LoggerFactory.getLogger(this.getClass());
 
@@ -44,6 +50,21 @@ class courseRepositoryTest {
     public void deleteById_basic(){
         courseRepository.deletById(10002L);
         Assertions.assertNull(courseRepository.findById(10002L));
+    }
+
+
+    @Test
+    @Transactional
+    public void retrieveReviewForCourse(){
+      course course = courseRepository.findById(10001L);
+      logger.info("{}", course.getReviews());
+    }
+
+    @Test
+    @Transactional
+    public void retrieveCourseForReview(){
+        review review = em.find(review.class, 50001L);
+        logger.info("{}", review.getCourse());
     }
 
 }
