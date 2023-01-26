@@ -1,10 +1,9 @@
 package com.studies.hibernate.jpawithhibernate;
 
 import com.google.gson.Gson;
-import com.studies.hibernate.jpawithhibernate.entity.course;
-import com.studies.hibernate.jpawithhibernate.entity.review;
-import com.studies.hibernate.jpawithhibernate.entity.student;
+import com.studies.hibernate.jpawithhibernate.entity.*;
 import com.studies.hibernate.jpawithhibernate.repository.CourseRepository;
+import com.studies.hibernate.jpawithhibernate.repository.EmployeeRepository;
 import com.studies.hibernate.jpawithhibernate.repository.StudentRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -13,6 +12,7 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -27,6 +27,9 @@ public class JpaWithHibernateApplication implements CommandLineRunner {
 
 	@Autowired
 	StudentRepository studentRepository;
+
+	@Autowired
+	EmployeeRepository employeeRepository;
 
 	public static void main(String[] args) {
 		SpringApplication.run(JpaWithHibernateApplication.class, args);
@@ -51,7 +54,9 @@ public class JpaWithHibernateApplication implements CommandLineRunner {
 //		reviews.add(new review("6", "Great"));
 //		courseRepository.addReviewForCourseHarcoded(10003L, reviews);
 
-		studentRepository.saveStudentCourseDetails(new student("Hussain"), new course("Hibernate with JPA"));
+//		studentRepository.saveStudentCourseDetails(new student("Hussain"), new course("Hibernate with JPA"));
 
+		employeeRepository.insert(new PartTimeEmployee("Mohammed", new BigDecimal(1000L)));
+		employeeRepository.insert(new FullTimeEmployee("Hussain", new BigDecimal(1001L)));
 	}
 }
