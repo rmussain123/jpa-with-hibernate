@@ -56,7 +56,7 @@ public class JpaWithHibernateApplication implements CommandLineRunner {
 
 //		studentRepository.saveStudentCourseDetails(new student("Hussain"), new course("Hibernate with JPA"));
 
-		employeeRepository.insert(new PartTimeEmployee("Mohammed", new BigDecimal(1000L)));
-		employeeRepository.insert(new FullTimeEmployee("Hussain", new BigDecimal(1001L)));
+//		employeeRepository.insert(new PartTimeEmployee("Mohammed", new BigDecimal(1000L)));
+//		employeeRepository.insert(new FullTimeEmployee("Hussain", new BigDecimal(1001L)));
 	}
 }

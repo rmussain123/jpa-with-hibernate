@@ -18,7 +18,7 @@ import java.util.List;
  */
 
 @SpringBootTest(classes = JpaWithHibernateApplication.class)
-class JPATest {
+class JPQLTest {
 
     @Autowired
     EntityManager entityManager;
