@@ -16,7 +16,7 @@ import java.util.List;
 //)
 
 @Entity
-@NamedQuery(name="course.findAll", query="SELECT id, Name FROM course")
+//@NamedQuery(name="course.findAll", query="SELECT id, Name FROM course")
 public class course {
 
     @Id
