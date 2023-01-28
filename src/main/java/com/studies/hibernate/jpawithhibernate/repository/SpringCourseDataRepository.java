@@ -9,5 +9,5 @@ import java.util.List;
 
 @RepositoryRestResource(path = "courses")
 public interface SpringCourseDataRepository extends JpaRepository<course, Integer> {
-    List<course> findById(String name);
+    List<course> findAll();
 }

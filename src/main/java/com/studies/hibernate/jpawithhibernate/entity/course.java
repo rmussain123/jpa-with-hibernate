@@ -17,6 +17,7 @@ import java.util.List;
 
 @Entity
 @NamedQuery(name="course.findAll", query="SELECT id, Name FROM course")
+@Cacheable
 public class course {
 
     @Id

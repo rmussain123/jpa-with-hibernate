@@ -21,3 +21,12 @@ Dirty Read
 -
 
 Non repeata
+
+
+Second level cache we can implement using eh cahce
+-
+    1. enable second level cache
+    2. specify the caching framework
+    3. Only cache what I tell to cache
+    4. What data to cache
+    Refer application properties further

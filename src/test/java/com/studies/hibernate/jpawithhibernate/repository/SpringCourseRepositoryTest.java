@@ -66,6 +66,24 @@ class SpringCourseRepositoryTest {
 
     }
 
+
+   /**
+    * In this example we can test the first level of cache
+    * The data has been fetched at first time only,
+    * If same data required the second time this will retrieve using second level cache itself
+     */
+    @Test
+    @Transactional
+    public void retrieveCourseWithFirstLevelOfCache(){
+
+        Optional<course> courseOptional = courseRepository.findById(10001);
+        logger.info("First level of cache - 1 -> {}", courseOptional.get().getStudents());
+
+        Optional<course> courseOptional1 = courseRepository.findById(10001);
+        logger.info("First level of cache - 2 -> {}", courseOptional1.get().getStudents());
+
+    }
+
     @Test
     @Transactional
     public void retrieveCourseWithNoStudents(){
