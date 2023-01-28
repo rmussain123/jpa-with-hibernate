@@ -4,6 +4,7 @@ import com.google.gson.Gson;
 import com.studies.hibernate.jpawithhibernate.entity.*;
 import com.studies.hibernate.jpawithhibernate.repository.CourseRepository;
 import com.studies.hibernate.jpawithhibernate.repository.EmployeeRepository;
+import com.studies.hibernate.jpawithhibernate.repository.SpringCourseDataRepository;
 import com.studies.hibernate.jpawithhibernate.repository.StudentRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -31,6 +32,9 @@ public class JpaWithHibernateApplication implements CommandLineRunner {
 	@Autowired
 	EmployeeRepository employeeRepository;
 
+    @Autowired
+    SpringCourseDataRepository springCourseDataRepository;
+
 	public static void main(String[] args) {
 		SpringApplication.run(JpaWithHibernateApplication.class, args);
 	}
@@ -56,7 +60,9 @@ public class JpaWithHibernateApplication implements CommandLineRunner {
 
 //		studentRepository.saveStudentCourseDetails(new student("Hussain"), new course("Hibernate with JPA"));
 
-		employeeRepository.insert(new PartTimeEmployee("Mohammed", new BigDecimal(1000L)));
-		employeeRepository.insert(new FullTimeEmployee("Hussain", new BigDecimal(1001L)));
+//		employeeRepository.insert(new PartTimeEmployee("Mohammed", new BigDecimal(1000L)));
+//		employeeRepository.insert(new FullTimeEmployee("Hussain", new BigDecimal(1001L)));
+
+
 	}
 }
